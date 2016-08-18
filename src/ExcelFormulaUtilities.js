@@ -474,10 +474,10 @@
                 //  {}
                 doAddToken = doAddToken && (((tokens.next().type.toString() === TOK_TYPE_FUNCTION) && (tokens.next().subtype.toString() === TOK_SUBTYPE_START)) || ((tokens.next().type.toString() === TOK_TYPE_SUBEXPR) && (tokens.next().subtype.toString() === TOK_SUBTYPE_START)) || (tokens.next().type.toString() === TOK_TYPE_OPERAND));
                 //else if (!(
-                //	((tokens.next().type == TOK_TYPE_FUNCTION) && (tokens.next().subtype == TOK_SUBTYPE_START))
-                //	|| ((tokens.next().type == TOK_TYPE_SUBEXPR) && (tokens.next().subtype == TOK_SUBTYPE_START))
-                //	|| (tokens.next().type == TOK_TYPE_OPERAND)))
-                //	{}
+                //  ((tokens.next().type == TOK_TYPE_FUNCTION) && (tokens.next().subtype == TOK_SUBTYPE_START))
+                //  || ((tokens.next().type == TOK_TYPE_SUBEXPR) && (tokens.next().subtype == TOK_SUBTYPE_START))
+                //  || (tokens.next().type == TOK_TYPE_OPERAND)))
+                //  {}
                 //else { tokens2.add(token.value, TOK_TYPE_OP_IN, TOK_SUBTYPE_INTERSECT)};
                 if (doAddToken) {
                     tokens2.add(token.value.toString(), TOK_TYPE_OP_IN, TOK_SUBTYPE_INTERSECT);
@@ -812,10 +812,10 @@
             tokenString = formatStr(replaceTokenTmpl(options.tmplLogical), tokenString, indt, lineBreak);
             break;
         case "argument":
-        	if(lastToken.type !== "argument"){
-        		tokenString = formatStr(replaceTokenTmpl(options.tmplArgument), tokenString, indt, lineBreak);
+          if(lastToken.type !== "argument"){
+            tokenString = formatStr(replaceTokenTmpl(options.tmplArgument), tokenString, indt, lineBreak);
             } else  {
-            	tokenString = formatStr(replaceTokenTmpl("{{autoindent}}"+options.tmplArgument), tokenString, indt, lineBreak);
+              tokenString = formatStr(replaceTokenTmpl("{{autoindent}}"+options.tmplArgument), tokenString, indt, lineBreak);
             }
             break;
         case "subexpression":
@@ -852,7 +852,7 @@
      *  tmplOperandLogical          - template for logical operators such as + - = ...
      *  tmplOperandNumber           - template for numbers.
      *  tmplOperandText             - template for text/strings.
-     *  tmplArgument				- template for argument seperators such as ,.
+     *  tmplArgument        - template for argument seperators such as ,.
      *  tmplFunctionStartArray      - template for the start of an array.
      *  tmplFunctionStartArrayRow   - template for the start of an array row.
      *  tmplFunctionStopArrayRow    - template for the end of an array row.
@@ -864,7 +864,7 @@
      *  autoLineBreak               - when rendering line breaks automaticly which types should it break on. "TOK_SUBTYPE_STOP | TOK_SUBTYPE_START | TOK_TYPE_ARGUMENT"
      *  newLine                     - used for the {{autolinebreak}} replacement as well as some string parsing. if this is not set correctly you may get undesired results. usually \n for text or <br /> for html
      *  trim: true                  - trim the output.
-     *	customTokenRender: null     - this is a call back to a custom token function. your call back should look like
+     *  customTokenRender: null     - this is a call back to a custom token function. your call back should look like
      *                                EXAMPLE:
      *
      *                                    customTokenRender: function(tokenString, token, indent, linbreak){
@@ -1114,7 +1114,7 @@
 
                     case TOK_SUBTYPE_RANGE:
 
-                        switch (currentFunctionOnStack.name.toLowerCase()) {
+                        switch (currentFunctionOnStack ? currentFunctionOnStack.name.toLowerCase() : '') {
                         // If in the sum function break aout cell names and add
                         case "sum":
                             //TODO make sure this is working
